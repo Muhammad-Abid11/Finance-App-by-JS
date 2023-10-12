@@ -23,6 +23,15 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+        #resultTable {
+            background-color: yellow;
+            color: red;
+        }
+
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 
@@ -41,10 +50,17 @@
         </div>
         <div>
             <table id='table' border="1">
-                <tr id='header-row'>
+                <tr>
                     <th>Description</th>
                     <th>Amount</th>
                     <th>Type</th>
+                </tr>
+                <tbody id="tableBody">
+                    <!-- Table rows will go here -->
+                </tbody>
+                <tr class="hide" id="resultTable">
+                    <th>Total</th>
+                    <th id="totalAmount">00</th>
                 </tr>
             </table>
         </div>

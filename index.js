@@ -4,8 +4,8 @@ function addRecord(type) {
 
     var Pname = document.getElementById("ProjectName")
     var Pamount = document.getElementById("amount")
-    var table = document.getElementById("table")
-    // ..... create Elements and set values
+
+    // ..... create Elements and setting values
     var trElement = document.createElement("tr")
     var tdElement1 = document.createElement("td")
     tdElement1.append(Pname.value);
@@ -13,20 +13,28 @@ function addRecord(type) {
     tdElement2.append(Pamount.value);
     var tdElement3 = document.createElement("td")
     tdElement3.append(type)
+
+    //  connect with tr
     trElement.append(tdElement1)
     trElement.append(tdElement2)
     trElement.append(tdElement3)
-    table.append(trElement)
-    console.log(type)
-    // ....... create Total row and its calculation
 
-    var trResult = document.createElement("tr")
-    var tdResult = document.createElement("td")
-    tdResult.append("Total")
-    var tdAmount = document.createElement("td")
-    tdAmount.append(amount)
-    trResult.append(tdResult)
-    trResult.append(tdAmount)
-    table.append(trResult)
+    //for data enter between tableHead and result
+    var tableBody = document.getElementById("tableBody");
+    tableBody.append(trElement);
+
+    // ....... Total amount 
+    if (type == "Income") {
+        amount += +Pamount.value
+    } else {
+        amount -= +Pamount.value
+    }
+
+    //  table unhide down
+    var resultTable = document.getElementById("resultTable")
+    resultTable.className = ""
+    var totalAmount = document.getElementById("totalAmount");
+    totalAmount.innerHTML = amount
+    console.log("totalAmount-->", totalAmount.innerHTML)
 }
 
